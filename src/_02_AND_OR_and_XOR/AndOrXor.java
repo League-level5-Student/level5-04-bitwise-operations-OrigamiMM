@@ -7,7 +7,10 @@ public class AndOrXor {
 		
 		// EXAMPLE:
 		// What is the value of 5 & 9?
-		int num = 5 & 9;
+		//5  0 1 0 1
+		//13 1 1 0 1
+		//   0 1 0 1
+		int num = 5 & 13;
 		System.out.println(num); // This prints 1
 		
 		// 5     = 0 1 0 1
