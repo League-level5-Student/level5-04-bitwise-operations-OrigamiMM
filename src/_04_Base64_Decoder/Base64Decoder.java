@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Base64Decoder {
 	/*
@@ -52,46 +53,42 @@ public class Base64Decoder {
 	//   array should be the binary value of the encoded characters.
 	public static byte[] convert4CharsTo24Bits(String s){
 		byte[] bytes = new byte[3];
-		byte byte1 = (byte) s.charAt(0);
-		byte byte2 = (byte) s.charAt(1);
-		byte byte3 = (byte) s.charAt(2);
-		byte byte4 = (byte) s.charAt(3);
+		byte byte1 = convertBase64Char(s.charAt(0));
+		byte byte2 = convertBase64Char(s.charAt(1));
+		byte byte3 = convertBase64Char(s.charAt(2));
+		byte byte4 = convertBase64Char(s.charAt(3));
 		
 		bytes[0] = (byte) ((byte1 <<2) | (byte2>>4));
-		bytes[1] = (byte)((byte2) | (byte3));
-		bytes[2] = (byte) ((byte3) | (byte4));
-				
+		bytes[1] = (byte)((byte2<<4) | (byte3>>2));
+		bytes[2] = (byte) ((byte3<<6) | (byte4));
+			
 		return bytes;
 	}
 	
 	//3. Complete this method so that it takes in a string of any length
 	//   and returns the full byte array of the decoded base64 characters.
 	public static byte[] base64StringToByteArray(String file) {
-		String whole = "";
 		String fourChar = "";
-		byte[] full;
-		try {
-			BufferedReader bf = new BufferedReader(new FileReader(file));
-			
-			String line = bf.readLine();
-			while(line != null) {
-				whole += line;
-				line = bf.readLine();
-			}
-			bf.close();
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ArrayList<Byte> bytes = new ArrayList<Byte>();
+		byte[] temp;
 		
-		for(int i = 0; i < whole.length(); i ++) {
-			fourChar += whole.charAt(i) + "";
+		for(int i = 1; i < file.length()+1; i ++) {
+			fourChar += file.charAt(i-1) + "";
 			if(i % 4 == 0) {
-				convert4CharsTo24Bits(fourChar);
+				temp = convert4CharsTo24Bits(fourChar);
+				for (int j = 0; j < temp.length; j++) {
+					bytes.add(temp[j]);
+				}
+				fourChar = "";
 			}
 		}
 		
-		return null;
+		byte[] full = new byte[bytes.size()];
+		for (int i = 0; i < full.length; i++) {
+			full[i] = bytes.get(i);
+		}
+		System.out.println("This is running");
+		
+		return full;
 	}
 }

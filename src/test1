@@ -1,0 +1,54 @@
+Level 5 exam #1
+
+
+1.	String fileName = "(FILE-NAME-HERE)";
+	String msg = JOPTIONPANE.ShowInputdialogue(null, "what would you like to save?");
+	try{
+		FileWriter fw = new FileWriter(filename, true);
+		fw.write(msg);
+		fw.close
+	} catch(IOException e){
+		e.printStackTrace();
+	}
+
+2.	readLine() returns a null value at the end of the file 
+
+3.	Robot rob = new Robot();
+	Thread thread = new Thread(()->{
+		for(int i = 0; i < 4; i ++){
+			rob.move(10);
+			rob.turn(90);
+		}
+	});
+	
+	thread.start();
+	
+4. FileReader fr = new FileReader("dictionary.txt");
+
+5. Stream<Integer> streamIntegerObject = nums.stream();
+
+6. Arrays.stream(list).sorted();
+
+7.  JButton button = new JButton();
+
+	button.addActionListener((e)->{
+		System.exit(0);
+	});
+	
+8.  interface car{
+		int topSpeed(int spd);	
+	}
+	
+9.	    4: 0 0 0 0 1 0 0
+	(<<2): 0 0 1 0 0 0 0
+	New Value: 16
+	
+10. a) 5
+	b) 9
+	c) 64 + 16 + 8 + 4 + 1 = (60 + 10 + 6 + 4) + 8 + 4 + 1 = (80) + 13 = 93
+	d) 32 + 16 + 8 + 4 = (30 + 10 + 6 + 2) + 4 = (48) + 8 = 56
+	
+11. a) 100
+	b) 1111
+	c) 111110
+	b)
