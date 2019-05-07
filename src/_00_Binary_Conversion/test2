@@ -1,0 +1,23 @@
+8. 
+
+public interface Closable{
+
+	void close();
+	
+}
+
+14. 
+
+interface Roller{
+	void roll(float angle);
+}
+
+public void rotate(Roller r){
+	//code here
+}
+
+//-----
+
+rotate((r)->{
+	r = 5; 
+});
